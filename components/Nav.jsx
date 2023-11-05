@@ -61,9 +61,7 @@ function Nav() {
                 key={item.name}
                 onClick={(e)=> {
                   e.preventDefault()
-                  signIn('google',{
-                    callbackUrl: '/'
-                  })
+                  signIn('google')
                 }
                 }
                 className='black_btn'
