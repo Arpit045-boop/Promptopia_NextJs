@@ -32,31 +32,31 @@ const handler = NextAuth({
   
       return session;
     },
-    // async signIn({account, profile }) {
-    //   try {
-    //     await connectToDB();
+    async signIn({account, profile }) {
+      try {
+        await connectToDB();
   
-    //     // check if user exists
-    //     const userExist = await User.findOne({
-    //       email: profile.email,
-    //     });
+        // check if user exists
+        const userExist = await User.findOne({
+          email: profile.email,
+        });
   
-    //     // if not, create a new user
-    //     if (!userExist) {
-    //       const newUser = await User.create({
-    //         email: profile.email,
-    //         username: profile.name.replace(" ", "").toLowerCase(),
-    //         image: profile.picture,
-    //       });
-    //       if (!newUser) {
-    //         throw new Error("Failed to create a new user.");
-    //       }
-    //       return { user: newUser };
-    //     }
-    //   } catch (error) {
-    //     console.log(error);
-    //   }
-    // },
+        // if not, create a new user
+        if (!userExist) {
+          const newUser = await User.create({
+            email: profile.email,
+            username: profile.name.replace(" ", "").toLowerCase(),
+            image: profile.picture,
+          });
+          if (!newUser) {
+            throw new Error("Failed to create a new user.");
+          }
+          return { user: newUser };
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    },
   }
  
 });
