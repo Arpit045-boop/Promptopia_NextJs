@@ -23,7 +23,7 @@ function Nav() {
     <nav className='flex-between w-full mb-16 pt-3'>
       <Link href="/" className='flex gap-2 flex-center'>
         <Image
-           src={session?.user.image}
+          src={session?.user.image}
           alt='Promptopia Logo'
           width={30}
           height={30}
@@ -59,13 +59,15 @@ function Nav() {
               <button
                 type='button'
                 key={item.name}
-                onClick={()=> signIn('google')}
+                onClick={(e)=> {
+                  e.preventDefault()
+                  signIn('google')
+                }
+                }
                 className='black_btn'
-              >
-                
-                Sign In
+              > 
+              Sign In
               </button>
-            
           ))}
           </>
         )}
